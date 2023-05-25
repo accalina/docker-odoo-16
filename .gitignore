@@ -1,3 +1,7 @@
+etc/*
+!etc/odoo.conf
+postgresql/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

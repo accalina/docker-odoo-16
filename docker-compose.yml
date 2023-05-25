@@ -1,0 +1,30 @@
+version: '2'
+services:
+  postgres:
+    image: postgres:15
+    user: root
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoopassword
+      - POSTGRES_DB=postgres
+    volumes:
+        - ./postgresql:/var/lib/postgresql/data
+    # restart: always             # run as a service
+
+  odoo16:
+    image: odoo:16
+    container_name: myodoo
+    user: root
+    ports:
+      - "10016:8069"
+      - "20016:8072" # live chat
+    tty: true
+    command: --
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - ./addons:/mnt/extra-addons
+      - ./etc:/etc/odoo
+    depends_on:
+      - postgres
+    # restart: always             # run as a service
