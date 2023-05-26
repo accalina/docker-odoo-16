@@ -1,5 +1,7 @@
 etc/*
 !etc/odoo.conf
+addons/*
+!addons/.gitkeep
 postgresql/
 
 # Byte-compiled / optimized / DLL files

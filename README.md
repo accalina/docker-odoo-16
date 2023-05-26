@@ -57,6 +57,23 @@ password: admin
 # Getting Started
 This section will guide you to create new addon and more
 
+### How to change password
+```
+> After logged in click the your profile section (top right corner)
+> click on myprofile
+> click on action (gear icon)
+> click on change password
+```
+
+### How to see logs
+```sh
+# for see existing logs in 10 lines
+$ tail -n 10 ./etc/odoo-server.log 
+
+# for monitoring logs
+$ tail -f -n 0 ./etc/odoo-server.log 
+```
+
 ### Create new addon
 ```sh
 # Create new addon with scaffolding
@@ -64,4 +81,22 @@ $ docker-compose exec odoo16 odoo scaffold <addon_name> /mnt/extra-addons
 
 # Change ownership from root to current user (to allow edit files)
 $ sudo chown $(id -u):$(id -g) -R ./addons
+
+# Activate the developer option
+- go to the home menu (top left icon) and choose `Settings`
+- on `Developer Tools` section choose `Activate the developer mode`
+
+# Activate selected Addon
+- go to the home menu (top left icon) again and choose `Apps`
+- click on `Update Apps List` then click update
+- Deselect the apps filter and type your module name on search bar
+- click on `activate`
+
+# Code your addon
+- use your code editor to edit the addon located on `./addons/<your addon name>`
+- then go to the home menu (top left icon) again and choose `Apps`
+- find your addon, click the 3 dots, and click upgrade
+
+# run the addon model
+$ docker-compose restart odoo16
 ```
